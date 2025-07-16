@@ -1,0 +1,10 @@
+<h2>הרשמה</h2>
+<form (ngSubmit)="onRegister()">
+  <input [(ngModel)]="user.userName" name="name" placeholder="שם משתמש" required>
+  <input [(ngModel)]="user.password" name="password" placeholder="סיסמה" required>
+  <input [(ngModel)]="user.email" name="email" placeholder="אימייל">
+  <!-- כל שדה אחר שרלוונטי -->
+  <button type="submit">הרשם</button>
+</form>
+
+<div *ngIf="errorMsg" style="color:red;">{{ errorMsg }}</div>

@@ -1,0 +1,16 @@
+<h2>התחברות</h2>
+<form (ngSubmit)="onLogin()">
+  <label>
+    שם משתמש:
+    <input type="text" [(ngModel)]="userName" name="userName" required />
+  </label>
+  <br />
+  <label>
+    סיסמה:
+    <input type="password" [(ngModel)]="password" name="password" required />
+  </label>
+  <br />
+  <button type="submit">התחבר</button>
+</form>
+
+<p *ngIf="errorMsg" style="color: red;">{{ errorMsg }}</p>
