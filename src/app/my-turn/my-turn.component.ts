@@ -4,11 +4,12 @@ import { RouterLink } from '@angular/router';
 import { TurnService } from '../../services/turn.service';
 import { Turn } from '../../model/turn.model';
 import { UserService } from '../../services/user.service';
+import { AddTurnComponent } from '../add-turn/add-turn.component';
 
 
 @Component({
   selector: 'app-my-turn',
-  imports: [RouterLink,CommonModule],
+  imports: [RouterLink, CommonModule, AddTurnComponent],
   templateUrl: './my-turn.component.html',
   styleUrl: './my-turn.component.css'
 })

@@ -3,6 +3,14 @@
   <input [(ngModel)]="user.userName" name="name" placeholder="שם משתמש" required>
   <input [(ngModel)]="user.password" name="password" placeholder="סיסמה" required>
   <input [(ngModel)]="user.email" name="email" placeholder="אימייל">
+  <input [(ngModel)]="user.yearsOfSeniority" name="yearsOfSeniority" placeholder="שנים">
+  <input [(ngModel)]="user.phoneNumber" name="phoneNumber" placeholder="טלפון">
+  <select [(ngModel)]="user.role" name="role" placeholder="הרשאה">
+    <option value="2">פאנית</option>
+    <option value="1">לקוחה</option>
+
+  </select>
+
   <!-- כל שדה אחר שרלוונטי -->
   <button type="submit">הרשם</button>
 </form>

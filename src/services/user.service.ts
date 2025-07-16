@@ -11,9 +11,9 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
 
-  setLogin(username: string, password: string): Observable<UserToken> {
+  setLogin(userName: string, password: string): Observable<UserToken> {
     return this.http.post<UserToken>('https://localhost:7193/api/auth', {
-      username,
+      userName,
       password
     });
 

@@ -1,1 +1,24 @@
-<p>select-turn works!</p>
+<a routerLink="/select-turn">לבחירת תורים</a>
+<h2 class="text-center my-4">התורים שלי</h2>
+
+<table class="table table-striped text-center">
+    <thead>
+        <tr>
+            <th>יום</th>
+            <th>שעה</th>
+            <th>שם פאנית</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let turn of turns">
+            <td>{{ turn.day }}</td>
+            <td>{{ turn.hour }}</td>
+            <td>{{ turn.customer }}</td>
+            <td> <button (click)="selectTurn(turn.id)"> לבחירה</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="turns.length === 0" class="text-center text-muted">
+    אין לך תורים.
+</div>

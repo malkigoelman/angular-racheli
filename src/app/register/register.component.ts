@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule]
 })
 export class RegisterComponent implements OnInit {
-  user: Customer = { userName: '', password: '', email: '', phoneNumber: '', yearsOfSeniority: 0,IsActive:true };
+  user: Customer = { userName: '', password: '', email: '', phoneNumber: '', yearsOfSeniority: 0,IsActive:true, role:0 };
   errorMsg = '';
 
   constructor(private route: ActivatedRoute, private userService: UserService, private router: Router) { }

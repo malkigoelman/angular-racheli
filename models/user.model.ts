@@ -16,5 +16,6 @@ export interface Customer {
     phoneNumber: string,
     yearsOfSeniority: number,
     IsActive: boolean,
+    role: number
 
 }
