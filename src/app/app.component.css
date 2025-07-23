@@ -1,0 +1,49 @@
+.user-avatar {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+  }
+  
+  .avatar-circle {
+    position: relative;
+    background-color: #1976d2; /* כחול Angular Material לדוגמה */
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  /* כפתור ההתנתקות ליד האות הראשונה */
+  .logout-btn {
+    position: absolute;
+    top: 50%;
+    right: -35px; /* מציב את הכפתור מימין לעיגול */
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 4px;
+    display: none; /* יופיע רק כשעוברים על העיגול */
+  }
+  
+  /* מראה הכפתור כשמעבירים עכבר */
+  .avatar-circle:hover .logout-btn {
+    display: block;
+  }
+  
+  /* סגנון אייקון */
+  .logout-btn mat-icon {
+    font-size: 24px;
+    color: white;
+  }
+  
+  /* Tooltip (דורש MatTooltipModule) */
+  

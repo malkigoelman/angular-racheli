@@ -1,24 +1,31 @@
-import { CommonModule, NgIf } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
 import { TurnService } from '../../services/turn.service';
 import { Turn } from '../../model/turn.model';
-import { UserService } from '../../services/user.service';
+import { RouterLink } from '@angular/router';
+
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-select-turn',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterLink,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule
+  ],
   templateUrl: './select-turn.component.html',
   styleUrl: './select-turn.component.css'
 })
-export class SelectTurnComponent {
-  turnService: TurnService = inject(TurnService)
+export class SelectTurnComponent implements OnInit {
+  turnService: TurnService = inject(TurnService);
   turns: Turn[] = [];
 
-  constructor() { }
-
   ngOnInit(): void {
-    console.log("my-turn login")
-
     this.turnService.getEmptyTurn().subscribe({
       next: data => this.turns = data,
       error: err => console.error(err)
@@ -26,7 +33,17 @@ export class SelectTurnComponent {
   }
 
   selectTurn(id: string) {
-    this.turnService.selectTurn(id)
-      .subscribe(x => console.log(x));
+    this.turnService.selectTurn(id).subscribe({
+      next: res => {
+        console.log('Selected:', res);
+        // רענון הרשימה אחרי הבחירה
+        this.turnService.getEmptyTurn().subscribe({
+          next: data => this.turns = data,
+          error: err => console.error('Error refreshing list:', err)
+        });
+      },
+      error: err => console.error(err)
+    });
   }
+  
 }

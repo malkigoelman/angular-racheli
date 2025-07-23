@@ -6,27 +6,53 @@ import { Turn } from '../../model/turn.model';
 import { UserService } from '../../services/user.service';
 import { AddTurnComponent } from '../add-turn/add-turn.component';
 
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-my-turn',
-  imports: [RouterLink, CommonModule, AddTurnComponent],
+  standalone: true,
+  imports: [
+    RouterLink,
+    CommonModule,
+    AddTurnComponent,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule
+  ],
   templateUrl: './my-turn.component.html',
-  styleUrl: './my-turn.component.css'
+  styleUrls: ['./my-turn.component.css']
 })
-
 export class MyTurnComponent implements OnInit {
-  turnService: TurnService = inject(TurnService)
+  turnService: TurnService = inject(TurnService);
   turns: Turn[] = [];
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    console.log("my-turn login")
-    const user = JSON.parse(sessionStorage.getItem('user')!);
+    console.log("my-turn login");
+    this.loadTurns();
+  }
 
+  loadTurns() {
     this.turnService.getTurnsByUser().subscribe({
       next: data => this.turns = data,
       error: err => console.error(err)
     });
   }
+
+  cancelTurn(turnId: number) {
+    if (confirm("אתה בטוח שברצונך לבטל את התור?")) {
+      this.turnService.removeCustomerFromTurn(turnId).subscribe({
+        next: () => {
+          // רענון הרשימה כדי לראות את השינויים
+          this.loadTurns();
+        },
+        error: err => console.error(err)
+      });
+    }
+  }
+  
+  
 }

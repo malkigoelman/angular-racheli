@@ -1,22 +1,17 @@
-<p>add-turn works!</p>
+<div class="add-turn-form">
+  <h2>הוספת תור חדש</h2>
+  <form [formGroup]="turnForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>יום:</label>
+      <input type="text" formControlName="day" />
+    </div>
 
-<h2>הוספת תור חדש</h2>
+    <div>
+      <label>שעה:</label>
+      <input type="text" formControlName="hour" />
+    </div>
 
-<form [formGroup]="turnForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label>יום:</label>
-    <input type="text" formControlName="day" />
-  </div>
-
-  <div>
-    <label>שעה:</label>
-    <input type="text" formControlName="hour" />
-  </div>
-
-  <!-- <div>
-    <label>מזהה מוכר (Seller Id):</label>
-    <input type="string" formControlName="sellerId" />
-  </div> -->
-
-  <button type="submit">שמור</button>
-</form>
+    <button type="submit">שמור</button>
+    <button type="button" (click)="onCancel()">ביטול</button>
+  </form>
+</div>

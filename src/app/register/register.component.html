@@ -1,18 +1,44 @@
-<h2>הרשמה</h2>
-<form (ngSubmit)="onRegister()">
-  <input [(ngModel)]="user.userName" name="name" placeholder="שם משתמש" required>
-  <input [(ngModel)]="user.password" name="password" placeholder="סיסמה" required>
-  <input [(ngModel)]="user.email" name="email" placeholder="אימייל">
-  <input [(ngModel)]="user.yearsOfSeniority" name="yearsOfSeniority" placeholder="שנים">
-  <input [(ngModel)]="user.phoneNumber" name="phoneNumber" placeholder="טלפון">
-  <select [(ngModel)]="user.role" name="role" placeholder="הרשאה">
-    <option value="2">פאנית</option>
-    <option value="1">לקוחה</option>
+<div class="login-container">
+  <mat-card class="login-card">
+    <h2 class="text-center">הרשמה</h2>
 
-  </select>
+    <form (ngSubmit)="onRegister()" class="form">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>שם משתמש</mat-label>
+        <input matInput [(ngModel)]="customer.userName" name="userName" required />
+      </mat-form-field>
 
-  <!-- כל שדה אחר שרלוונטי -->
-  <button type="submit">הרשם</button>
-</form>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>סיסמה</mat-label>
+        <input matInput type="password" [(ngModel)]="customer.password" name="password" required />
+      </mat-form-field>
 
-<div *ngIf="errorMsg" style="color:red;">{{ errorMsg }}</div>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>טלפון</mat-label>
+        <input matInput [(ngModel)]="customer.phoneNumber" name="phoneNumber" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>שנות ותק</mat-label>
+        <input matInput type="number" [(ngModel)]="customer.yearsOfSeniority" name="yearsOfSeniority" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>הרשאה</mat-label>
+        <mat-select [(ngModel)]="customer.role" name="role">
+          <mat-option [value]="1">לקוחה</mat-option>
+          <mat-option [value]="2">פאנית</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-raised-button color="accent" type="submit" class="full-width">הרשמה</button>
+
+      <div *ngIf="errorMsg" class="error-msg">{{ errorMsg }}</div>
+
+      <p class="text-center mt-2">
+        כבר רשום?
+        <a routerLink="/login" class="link">התחבר</a>
+      </p>
+    </form>
+  </mat-card>
+</div>

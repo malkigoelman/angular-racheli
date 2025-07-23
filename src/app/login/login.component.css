@@ -1,0 +1,71 @@
+/* רקע חום בהיר לכל הדף */
+:host {
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* height: 100vh; */
+    /* background-color: #f5e6da; */
+     /* חום בהיר */
+  }
+  /* מגדיר שהקונטיינר יתפוס את כל המסך וימרכז את התוכן במרכז */
+.login-container {
+    height: 100vh; /* גובה מלא של המסך */
+    display: flex;
+    justify-content: center; /* ממרכז אופקית */
+    align-items: center;     /* ממרכז אנכית */
+  }
+  
+  
+  
+  /* עיצוב כרטיס ההתחברות */
+  .login-card {
+    width: 350px;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #f5e6da; /* רקע של הכרטיס זהה לרקע */
+    color: #000; /* טקסט שחור */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* מרכז טקסט בכותרת */
+  .text-center {
+    text-align: center;
+    color: #000;
+  }
+  
+  /* רוחב מלא לשדות טופס */
+  .full-width {
+    width: 100%;
+  }
+  
+  /* כפתורים לבנים עם טקסט שחור */
+  button.mat-raised-button {
+    background-color: #fff !important;
+    color: #000 !important;
+    font-weight: 600;
+  }
+  
+  /* כפתור בהתחברות - במצב הובר */
+  button.mat-raised-button:hover {
+    background-color: #eee !important;
+  }
+  
+  /* עיצוב שגיאה */
+  .error-msg {
+    color: #b00020;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  /* קישורים */
+  .link {
+    color: #1976d2; /* כחול Angular Material לדוגמה */
+    text-decoration: none;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,33 +1,51 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TurnService } from '../../services/turn.service';
 
 @Component({
   selector: 'app-add-turn',
-  imports: [ReactiveFormsModule],
   templateUrl: './add-turn.component.html',
-  styleUrl: './add-turn.component.css'
+  styleUrls: ['./add-turn.component.css'],
+  imports:[ReactiveFormsModule]
 })
 export class AddTurnComponent {
+  @Output() turnAdded = new EventEmitter<void>();
+  @Output() cancel = new EventEmitter<void>();
+
+  @Input() sellerId!: number;
   turnForm: FormGroup;
 
   constructor(private fb: FormBuilder, private turnService: TurnService) {
     this.turnForm = this.fb.group({
       day: ['', Validators.required],
       hour: ['', Validators.required],
-      // sellerId: ['', Validators.required]
     });
   }
 
   onSubmit() {
+    if (!this.sellerId) {
+      alert('שגיאה: מזהה מוכר לא זמין, נא לנסות מאוחר יותר');
+      return;
+    }
     if (this.turnForm.valid) {
-      this.turnService.addTurn(this.turnForm.value).subscribe({
+      const dataToSend = {
+        ...this.turnForm.value,
+        sellerId: this.sellerId,
+        customerId: null
+      };
+
+      this.turnService.addTurn(dataToSend).subscribe({
         next: () => {
           alert('התור נוסף בהצלחה');
           this.turnForm.reset();
+          this.turnAdded.emit();
         },
         error: (err) => console.error(err)
       });
     }
+  }
+
+  onCancel() {
+    this.cancel.emit();
   }
 }

@@ -1,7 +1,8 @@
 import { Injectable, signal } from '@angular/core';
-import { User, UserToken } from '../../models/user.model';
+import { User } from '../model/user.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Customer } from '../model/customer.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,16 +12,21 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
 
-  setLogin(userName: string, password: string): Observable<UserToken> {
-    return this.http.post<UserToken>('https://localhost:7193/api/auth', {
-      userName,
+  setLogin(UserName: string, password: string): Observable<User> {
+    return this.http.post<User>('https://localhost:7193/api/auth', {
+      UserName,
       password
     });
 
   }
-
-  register(user: User): Observable<User> {
-    return this.http.post<User>('https://localhost:7193/api/customers', user);
-
+  getUserById(userId: number): Observable<User> {
+    return this.http.get<User>(`https://localhost:7193/api/users/${userId}`, {
+      headers: { Authorization: 'Bearer ' + localStorage.getItem('token') }
+    });
   }
+  
+  register(customer: Customer) {
+    return this.http.post<Customer>('https://localhost:7193/api/customers', customer);
+  }
+  
 }

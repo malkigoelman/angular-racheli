@@ -2,11 +2,11 @@
     max-width: 900px;
     margin: 30px auto;
     padding: 20px;
-    background: #f5e6da; /* רקע חום בהיר */
+    background: #f5e6da;
     border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #000; /* טקסט שחור */
+    color: #000;
   }
   
   .header {
@@ -35,18 +35,17 @@
   .title {
     font-weight: 700;
     font-size: 1.8rem;
-    color: #000; /* שחור */
+    color: #000;
   }
   
   .turns-table {
     width: 100%;
     border-radius: 8px;
     overflow: hidden;
-    background: #fff;
   }
   
   .mat-header-cell {
-    background-color: #d7ccc8; /* גוון חום-בהיר יותר */
+    background-color: #d7ccc8;
     font-weight: 600;
     font-size: 1.1rem;
     color: #000;
@@ -66,15 +65,41 @@
     font-size: 1.1rem;
   }
   
-  /* כפתור בחירה */
-  button, .mat-flat-button, .mat-raised-button {
-    background-color: #fff !important;  /* לבן */
-    color: #000 !important;             /* שחור */
+  .mat-button, .mat-raised-button {
+    background-color: #fff !important;
+    color: #000 !important;
     border: 1px solid #bbb;
-    font-weight: 500;
   }
   
-  button:hover, .mat-flat-button:hover, .mat-raised-button:hover {
+  .mat-button:hover, .mat-raised-button:hover {
     background-color: #eee !important;
   }
+  .add-turn-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  .add-turn-container {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
   
+  .add-turn-form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
+    

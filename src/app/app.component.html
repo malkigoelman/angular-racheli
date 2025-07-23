@@ -1,28 +1,9 @@
-<div>
-  @if(!user.selectedUser())
-  {
-    <div>
-      <!-- <a routerLink="/bankers">משכיר </a> |
-      <a routerLink="/customers">שוכר</a> | -->
-      <a routerLink="/register">הרשמה</a> |
-      <a routerLink="/login">כניסה</a>
-
-
-    </div>
-  }
-  @else
-  {
-    <a routerLink="/bankers">דף הבית </a> |
-    <a routerLink="/customers">עוד דף</a>
-    {{user.selectedUser()?.userName}}
-    <a href="#" (click)="logout()">התנתק</a>
-
-  }
-  <hr />
-
-  <!-- <div *ngIf="currentUser">
-  שלום {{ currentUser.userName }}! ({{ currentUser.role }})
-</div> -->
+<div class="user-box" *ngIf="user.selectedUser(); else empty"> 
+  <span class="username">{{ user.selectedUser()?.userName }}</span>   |  
+  <a href="#" (click)="logout()" class="logout-link">   התנתק   </a>
 </div>
-<button (click)="logout()">כפתור</button>
+
+<ng-template #empty></ng-template>
+
+<hr />
 <router-outlet></router-outlet>
