@@ -1,12 +1,20 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TurnService } from '../../services/turn.service';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-add-turn',
   templateUrl: './add-turn.component.html',
   styleUrls: ['./add-turn.component.css'],
-  imports:[ReactiveFormsModule]
+  imports:[ReactiveFormsModule, MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,MatIconModule]
 })
 export class AddTurnComponent {
   @Output() turnAdded = new EventEmitter<void>();

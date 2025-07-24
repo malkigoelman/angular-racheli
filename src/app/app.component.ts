@@ -1,15 +1,3 @@
-// import { Component } from '@angular/core';
-// import { RouterOutlet } from '@angular/router';
-
-// @Component({
-//   selector: 'app-root',
-//   imports: [RouterOutlet],
-//   templateUrl: './app.component.html',
-//   styleUrl: './app.component.css'
-// })
-// export class AppComponent {
-//   title = 'my-car-app';
-// }
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
@@ -22,21 +10,27 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
+  currentDateTime: string = '';
   constructor(public user:UserService) {
     
   }
 
   ngOnInit(): void {
-    console.log(this.user.selectedUser())
+    this.updateTime();
+    setInterval(() => this.updateTime(), 1000);
 
-    // const user = localStorage.getItem('currentUser');
-    // if (user) {
-    //   this.currentUser = JSON.parse(user);
-    // }
+  
   }
 
-
+  updateTime() {
+    const now = new Date();
+    const options: Intl.DateTimeFormatOptions = {
+      year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', second: '2-digit',
+      hour12: false
+    };
+    this.currentDateTime = now.toLocaleString('he-IL', options);
+  }
   logout() {
     sessionStorage.removeItem('currentUser');
     // window.location.reload(); // רענון הדף כדי לעדכן תצוגה

@@ -1,6 +1,13 @@
-<div class="user-box" *ngIf="user.selectedUser(); else empty"> 
-  <span class="username">{{ user.selectedUser()?.userName }}</span>   |  
-  <a href="#" (click)="logout()" class="logout-link">   התנתק   </a>
+<div class="top-bar" *ngIf="user.selectedUser(); else empty">
+  <div class="left-section">
+    {{ currentDateTime }}
+  </div>
+
+  <div class="right-section">
+    <span class="username">{{ user.selectedUser()?.userName }}</span>
+    <span class="divider">|</span>
+    <a href="#" (click)="logout()" class="logout-link">התנתק</a>
+  </div>
 </div>
 
 <ng-template #empty></ng-template>
