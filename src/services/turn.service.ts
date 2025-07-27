@@ -27,7 +27,6 @@ export class TurnService {
     });
   }
   
-  
   getTurnsByUser() {
     return this.http.get<Turn[]>(`https://localhost:7193/api/turns/user/${this.userService.selectedUser()?.id}`, {
       headers: {
@@ -95,6 +94,7 @@ export class TurnService {
   }
   
   selectTurn(id: string) {
+    console.log(this.userService.selectedUser()?.id);
     return this.http.put<Turn[]>(`https://localhost:7193/api/turns/selecct/${id}`, {
       customerId: this.userService.selectedUser()?.id
     }, {

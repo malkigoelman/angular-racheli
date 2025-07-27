@@ -13,14 +13,13 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrls: ['./login.component.css'],
   standalone: true,
   imports: [
-    CommonModule,      // דרוש עבור *ngIf
-    FormsModule,       // דרוש עבור [(ngModel)]
+    CommonModule,    
+    FormsModule,     
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    RouterModule       // אם אתה משתמש ב routerLink בקומפוננטה
-  ]
+    RouterModule       ]
 })
 
 export class LoginComponent {
@@ -40,13 +39,12 @@ export class LoginComponent {
           localStorage.setItem("token", user.token);
           this.userService.selectedUser.set(user);
   
-          // ניווט לפי תפקיד
           if (user.userRole === 'seller') {
             this.router.navigate(['/seller-turns']);
           } else if (user.userRole === 'customer') {
             this.router.navigate(['/my-turn']);
           } else {
-            this.router.navigate(['/login']); // fallback
+            this.router.navigate(['/login']); 
           }
   
           alert('התחברת בהצלחה!');
